@@ -11,13 +11,25 @@ public class MyCanvas {
     JLabel view;
     BufferedImage surface;
     Random random = new Random();
+    int width = 900;
+    int height = 900;
+
+    Color color1 = Color.RED;
+    Color color2 = Color.ORANGE;
+    Color color3 = Color.YELLOW;
+    Color color4 = Color.GREEN;
+    Color color5 = Color.BLUE;
+    Color color6 = Color.MAGENTA;
+
+    int cubeValue = 0;
 
     public MyCanvas() {
-        surface = new BufferedImage(600, 400, BufferedImage.TYPE_INT_RGB);
+
+        surface = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         view = new JLabel(new ImageIcon(surface));
         Graphics g = surface.getGraphics();
-        g.setColor(Color.BLUE);
-        g.fillRect(0, 0, 600, 400);
+        g.setColor(Color.darkGray);
+        g.fillRect(0, 0, width, height);
         g.setColor(Color.BLACK);
         // Keep this until I figured out if it's painted on load or not.
         //g.drawLine(10, 20, 350, 380);
@@ -33,25 +45,52 @@ public class MyCanvas {
     }
 
     public int getCube() {
-        int useCube = random.nextInt(6);
-        if (useCube == 0) {
-            useCube++;
+        //TODO add random quotes
+        int Low = 1;
+        int High = 6;
+        int r = random.nextInt(High - Low) + Low;
+//        boolean rb = random.nextBoolean();
+//        if(rb){
+//            r=6;
+//        }
+        switch (r) {
+            case (1):
+                cubeValue = 1;
+                break;
+            case (2):
+                cubeValue = 2;
+                break;
+            case (3):
+                cubeValue = 3;
+                break;
+            case (4):
+                cubeValue = 4;
+                break;
+            case (5):
+                cubeValue = 5;
+                break;
+            case (6):
+                cubeValue = 6;
+                break;
         }
-        return useCube;
+        return r;
     }
 
-    public int getMoving(int current,int top){
-        return (top-current)/2+current;
+    public int getMoving(int current, int top) {
+        return (top - current) / 2 + current;
     }
 
-    int pointAx = 200;
-    int pointAy = 300;
+    int topX = width / 2;
+    int topY = height - height / 100 * 90;
 
-    int pointBx = 100;
-    int pointBy = 100;
+    int pointAx = width / 2; //top
+    int pointAy = 0;
 
-    int pointCx = 300;
-    int pointCy = 100;
+    int pointBx = 0; //bottomLeft
+    int pointBy = height - height / 100 * 10;
+
+    int pointCx = width; //bottomRight
+    int pointCy = height - height / 100 * 10;
 
     int startPointX = 120;
     int startPointY = 150;
@@ -60,37 +99,33 @@ public class MyCanvas {
     int currentPositionY = startPointY;
 
 
-
-
-
-
     public void addNewElement() {
         Graphics g = surface.getGraphics();
 
-        switch (getCube()){
-            case(1):
-                currentPositionX=getMoving(currentPositionX,pointAx);
-                currentPositionY=getMoving(currentPositionY,pointAy);
+        switch (getCube()) {
+            case (1):
+                currentPositionX = getMoving(currentPositionX, pointAx);
+                currentPositionY = getMoving(currentPositionY, pointAy);
                 break;
-            case(2):
-                currentPositionX=getMoving(currentPositionX,pointAx);
-                currentPositionY=getMoving(currentPositionY,pointAy);
+            case (2):
+                currentPositionX = getMoving(currentPositionX, pointAx);
+                currentPositionY = getMoving(currentPositionY, pointAy);
                 break;
-            case(3):
-                currentPositionX=getMoving(currentPositionX,pointBx);
-                currentPositionY=getMoving(currentPositionY,pointBy);
+            case (3):
+                currentPositionX = getMoving(currentPositionX, pointBx);
+                currentPositionY = getMoving(currentPositionY, pointBy);
                 break;
-            case(4):
-                currentPositionX=getMoving(currentPositionX,pointBx);
-                currentPositionY=getMoving(currentPositionY,pointBy);
+            case (4):
+                currentPositionX = getMoving(currentPositionX, pointBx);
+                currentPositionY = getMoving(currentPositionY, pointBy);
                 break;
-            case(5):
-                currentPositionX=getMoving(currentPositionX,pointCx);
-                currentPositionY=getMoving(currentPositionY,pointCy);
+            case (5):
+                currentPositionX = getMoving(currentPositionX, pointCx);
+                currentPositionY = getMoving(currentPositionY, pointCy);
                 break;
-            case(6):
-                currentPositionX=getMoving(currentPositionX,pointCx);
-                currentPositionY=getMoving(currentPositionY,pointCy);
+            case (6):
+                currentPositionX = getMoving(currentPositionX, pointCx);
+                currentPositionY = getMoving(currentPositionY, pointCy);
                 break;
         }
 
@@ -127,11 +162,28 @@ public class MyCanvas {
 //    }
 
     public void drawNode(int x, int y, Graphics g) {
-//        x=random.nextInt(100);
-//        y=random.nextInt(100);
-        g.setColor(Color.white);
-        g.fillOval(x, y, 1, 1);
-        g.drawOval(x, y, 1, 1);
+        switch (cubeValue) {
+            case (1):
+                g.setColor(Color.RED);
+                break;
+            case (2):
+                g.setColor(Color.ORANGE);
+                break;
+            case (3):
+                g.setColor(Color.YELLOW);
+                break;
+            case (4):
+                g.setColor(Color.GREEN);
+                break;
+            case (5):
+                g.setColor(Color.BLUE);
+                break;
+            case (6):
+                g.setColor(Color.MAGENTA);
+                break;
+        }
+        g.fillOval(x, y, 3, 3);
+        g.drawOval(x, y, 3, 3);
     }
 
 //        public void drawArc(int x, int y, int xx, int yy, Graphics g)
