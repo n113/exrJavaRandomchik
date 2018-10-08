@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class MyCanvas {
@@ -13,14 +12,6 @@ public class MyCanvas {
     Random random = new Random();
     int width = 900;
     int height = 900;
-
-    Color color1 = Color.RED;
-    Color color2 = Color.ORANGE;
-    Color color3 = Color.YELLOW;
-    Color color4 = Color.GREEN;
-    Color color5 = Color.BLUE;
-    Color color6 = Color.MAGENTA;
-
     int cubeValue = 0;
 
     public MyCanvas() {
@@ -31,8 +22,6 @@ public class MyCanvas {
         g.setColor(Color.darkGray);
         g.fillRect(0, 0, width, height);
         g.setColor(Color.BLACK);
-        // Keep this until I figured out if it's painted on load or not.
-        //g.drawLine(10, 20, 350, 380);
         g.dispose();
 
         ActionListener listener = new ActionListener() {
