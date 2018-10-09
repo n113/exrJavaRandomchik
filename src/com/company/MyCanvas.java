@@ -33,7 +33,7 @@ public class MyCanvas {
         timer.start();
     }
 
-    public int getCube() {
+        public int getCube() {
         //TODO add random quotes
         int Low = 1;
         int High = 6;
@@ -62,8 +62,40 @@ public class MyCanvas {
                 cubeValue = 6;
                 break;
         }
+        System.out.println(r);
         return r;
     }
+//    int cubeCOunter=1;
+//    public int getCube() {
+//        //TODO add random quotes
+//        int r = cubeCOunter;
+//        cubeCOunter++;
+//        if (cubeCOunter==7){
+//            cubeCOunter=1;
+//        }
+//        System.out.println(cubeCOunter);
+//        switch (r) {
+//            case (1):
+//                cubeValue = 1;
+//                break;
+//            case (2):
+//                cubeValue = 2;
+//                break;
+//            case (3):
+//                cubeValue = 3;
+//                break;
+//            case (4):
+//                cubeValue = 4;
+//                break;
+//            case (5):
+//                cubeValue = 5;
+//                break;
+//            case (6):
+//                cubeValue = 6;
+//                break;
+//        }
+//        return r;
+//    }
 
     public int getMoving(int current, int top) {
         return (top - current) / 2 + current;
@@ -171,8 +203,8 @@ public class MyCanvas {
                 g.setColor(Color.MAGENTA);
                 break;
         }
-        g.fillOval(x, y, 3, 3);
-        g.drawOval(x, y, 3, 3);
+        g.fillOval(x, y, 2, 2);
+        g.drawOval(x, y, 2, 2);
     }
 
 //        public void drawArc(int x, int y, int xx, int yy, Graphics g)
